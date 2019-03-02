@@ -25,6 +25,17 @@ class RequestData{
             return true;
         return false;
     }
+
+    public function isValidDate(){
+        $min = new DateTime('1920-01-01'); // date ga boleh lebih kecil dari ini
+        $min = $min->format('Y-m-d'); 
+        $max = date('Y-m-d', time()); // date ga boleh lebih besar dari waktu sekarang
+
+        if($this->val < $min || $this->val > $max)
+            return false;
+        else
+            return true;
+    }
 }
 
 class Request{
