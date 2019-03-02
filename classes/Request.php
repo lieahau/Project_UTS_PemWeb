@@ -1,40 +1,46 @@
 <?php
 class RequestData{
-    protected $val;
+    public $val;
 
     public function __construct($val){
         $this->val = $val;
     }
 
-    public function raw(){
-        return $this->val;
+    public function setVal($val){
+        $this->val = $val;
     }
 
-    public function safe(){
-        if (is_string($this->val))
-           return htmlspecialchars($this->val);
+    public function getVal(){
         return $this->val;
-    }
-
-    public function sanitizeEmail(){
-        return filter_var($this->val, FILTER_SANITIZE_EMAIL);
     }
 
     public function isValidText(){
-        if(preg_match('/^[a-zA-Z0-9]+$/', $this->val))
-            return true;
-        return false;
+        return (preg_match('/^[a-zA-Z0-9_]+$/', $this->val)); // cuma boleh alphabet, angka, dan underscore
     }
 
-    public function isValidDate(){
-        $min = new DateTime('1920-01-01'); // date ga boleh lebih kecil dari ini
-        $min = $min->format('Y-m-d'); 
-        $max = date('Y-m-d', time()); // date ga boleh lebih besar dari waktu sekarang
+    public function isValidLength($minLength = -1, $maxLength = 255){
+        return (strlen($this->val) > $minLength && strlen($this->val) < $maxLength);
+    }
+    
+    public function isValidBirthDate(){
+        $minDate = new DateTime('1920-01-01'); // date ga boleh lebih kecil dari ini
+        $minDate = $minDate->format('Y-m-d'); 
+        $maxDate = date('Y-m-d', time()); // date ga boleh lebih besar dari waktu sekarang
 
-        if($this->val < $min || $this->val > $max)
-            return false;
-        else
-            return true;
+        return ($this->val >= $minDate && $this->val <= $maxDate);
+    }
+
+    public function isValidUsername(){
+        return ($this->isValidLength(3, 255) && $this->isValidText());
+    }
+
+    public function isValidEmail(){
+        $clean_email = filter_var($this->val, FILTER_SANITIZE_EMAIL);
+        return ($this->val == $clean_email && filter_var($clean_email, FILTER_VALIDATE_EMAIL));
+    }
+
+    public function isValidPassword(){
+        return $this->isValidLength(6, 255);
     }
 }
 
