@@ -14,23 +14,20 @@
     // remember false = tidak menyimpan sesi login di cookie akan menghapus sesi pada saat keluar site
     // succeed merupakan hasil pencocokan username dan password dengan database
     // jika true maka berhasil login
-    $username;
-    $password;
-    $remember;
+    include_once $_SERVER['DOCUMENT_ROOT'].'/classes/Request.php';
+    $username = Request::post('username');
+    $password = Request::post('password');
+    $remember = Request::post('remember');
     $succeed = false;
-    if(isset($_POST['username'])) $username = $_POST['username'];
-    if(isset($_POST['password'])) $password = $_POST['password'];
-    if(isset($_POST['remember'])) $remember = $_POST['remember'];
     
     // membuat object DB untuk menghandle pengambilan informasi ke database
-    include_once $_SERVER['DOCUMENT_ROOT'].'DB.php';
-    $pdo = DB::connect();
-    $result = $pdo->query("SELECT * FROM user WHERE username='$username' && password=MD5('$password')");
-    foreach($result as $row){
-        if($row['username'] == $username && $row['password'] == md5($password)){
+    include_once $_SERVER['DOCUMENT_ROOT'].'/classes/DB.php';
+    DB::connect();
+    if($username->isValidText() && $password->isValidPassword()){
+        if(DB::queryCount('user', "username='$username->getVal()' 
+        && password=MD5('$password->getVal()'") == 1){
             $succeed = true;
         }
-        break;
     }
 
     // Start session and save response into "login_res"
