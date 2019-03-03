@@ -1,11 +1,15 @@
 <!-- Used for signup -->
 <?php
-    // auto load semua class
-    spl_autoload_register(function($className){ 
-        $path = $_SERVER['DOCUMENT_ROOT'].'/classes/';
-        include $path.$className.'.php';
-    });
-    // session_start(); // session_start must below spl_autoload
+    /*
+        This PHP handle signup-response
+        when client want to signup and submit the signup form
+        this php will return some kind of response to signup VIEW
+    */
+
+    // include class
+    require_once $_SERVER['DOCUMENT_ROOT'].'/classes/DB.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Request.php';
+    // session_start();
 
     // jika di submit form sign up
     if(isset($_POST['submit-signup']))
@@ -44,7 +48,7 @@
         $sex = Request::post('sex')->getVal();
         $profilepicture = 'placeholder.jpg'; // belom bisa upload file, jadi pake default value dulu
         
-        // validate apakah sudah ada di database
+        // cek apakah sudah ada di database
         if(DB::queryCount('user', "username = '$username'")){
             die("Sign Up failed. Username existed. Please use another username.");
         }
@@ -58,7 +62,9 @@
                 'first_name'=>$firstname, 'last_name'=>$lastname, 'birthdate'=>$birthdate, 'sex'=>$sex,
                 'profile_picture'=>$profilepicture
             ));
-            echo "Sign Up Success.";
+
+            // Sign up success, direct to login page
+            header("location: login.php");
         }
     }
     else{
