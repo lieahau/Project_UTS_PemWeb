@@ -5,6 +5,8 @@
 <!-- JSON consist of username and profile_picture -->
 
 <?php
+    /* ======= THIS PHP NOT TESTED YET ======= */
+
     // search is searched username value
     // limit is number of results to be returned
     require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Request.php';
@@ -13,7 +15,6 @@
 
     // Get data from DB
     require_once $_SERVER['DOCUMENT_ROOT'].'/classes/DB.php';
-    DB::connect();
     if($search->isValidText()){
         $result = DB::$pdo->query("
             SELECT username, profile_picture 
