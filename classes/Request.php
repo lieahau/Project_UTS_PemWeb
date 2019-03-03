@@ -1,6 +1,6 @@
 <?php
 class RequestData{
-    public $val;
+    private $val;
 
     public function __construct($val){
         $this->val = $val;
