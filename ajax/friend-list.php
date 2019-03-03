@@ -23,8 +23,9 @@
         ");
 
         // Send JSON data to client
+        header($_SERVER['SERVER_PROTOCOL'].'OK', true, 200);
         echo json_encode($result);
     }else{
-        http_response_code(404);
+        header($_SERVER['SERVER_PROTOCOL'].'404 fail to fetch data', true, 404);
     }
 ?>
