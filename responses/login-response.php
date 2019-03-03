@@ -14,14 +14,14 @@
     // remember false = tidak menyimpan sesi login di cookie akan menghapus sesi pada saat keluar site
     // succeed merupakan hasil pencocokan username dan password dengan database
     // jika true maka berhasil login
-    include_once $_SERVER['DOCUMENT_ROOT'].'/classes/Request.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Request.php';
     $username = Request::post('username');
     $password = Request::post('password');
     $remember = Request::post('remember');
     $succeed = false;
     
     // membuat object DB untuk menghandle pengambilan informasi ke database
-    include_once $_SERVER['DOCUMENT_ROOT'].'/classes/DB.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/classes/DB.php';
     DB::connect();
     if($username->isValidText() && $password->isValidPassword()){
         if(DB::queryCount('user', "username='$username->getVal()' 
