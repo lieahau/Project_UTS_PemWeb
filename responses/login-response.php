@@ -8,6 +8,7 @@
         Since this project use php to handle the response(not ajax)
         this controller will start a session and save the response into "login_res"
     */
+    /* ======= THIS PHP NOT TESTED YET ======= */
 
     // jika di submit form login
     if(isset($_POST['submit-login']))
