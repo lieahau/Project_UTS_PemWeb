@@ -7,12 +7,12 @@
 <?php
     // search is searched username value
     // limit is number of results to be returned
-    include_once $_SERVER['DOCUMENT_ROOT'].'/classes/Request.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Request.php';
     $search = Request::get('search');
     $limit = Request::get('limit')->getVal();
 
     // Get data from DB
-    include_once $_SERVER['DOCUMENT_ROOT'].'/classes/DB.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/classes/DB.php';
     DB::connect();
     if($search->isValidText()){
         $result = DB::$pdo->query("
