@@ -50,6 +50,24 @@
                                             <label class="form-check-label" for="remember">Remember Me</label>
                                         </div>
                                     </div>
+                                    <!-- Dynamic part of index.php -->
+                                    <!-- if login fail then show fail message -->
+                                    <?php
+                                        session_start();
+                                        if(isset($_SESSION['login_res'])){
+                                            if($_SESSION['login_res']){
+                                                header("location: profile-view.php");
+                                            }else{
+                                                echo "
+                                                <div class=\"col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 pb-2\">
+                                                    <p class=\"text-center my-0\">
+                                                        Incorrect username or password!
+                                                    </p>    
+                                                </div>
+                                                ";
+                                            }
+                                        }
+                                    ?>
                                 </div>
 
                                 <!-- Row for form footer -->
@@ -62,6 +80,11 @@
                                     </div>
                                 </div>
                             </form>
+                            <div class="signUpLink">
+                                <p class="text-center">
+                                    Don't Have Any Account? <a href="signup.php">Sign Up</a> Here!
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

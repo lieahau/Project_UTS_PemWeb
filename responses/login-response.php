@@ -19,6 +19,8 @@
         // remember false = tidak menyimpan sesi login di cookie akan menghapus sesi pada saat keluar site
         // succeed merupakan hasil pencocokan username dan password dengan database
         // jika true maka berhasil login
+        // akan menset session name dengan username dari user
+        // sehingga dapat mengingat identitas user yang masuk
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Request.php';
         $username = Request::post('username');
         $password = Request::post('password');

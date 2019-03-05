@@ -89,3 +89,15 @@
     left: 50%;
     transform: translate(-50%, -35%);
 }
+
+/* css for sign up text */
+.signUpLink{
+    position: relative;
+    font-size: 125%;
+    top: 65px;
+    color: white;
+}
+
+.signUpLink a{
+    color: yellow;
+}
