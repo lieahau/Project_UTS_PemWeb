@@ -15,7 +15,7 @@
 
 /* form section */
 .indexFormContainer{
-    background-image: url("/images/background_biru.png");
+    background-image: url("/images/assets/background_biru.png");
     background-repeat: repeat;
     background-size: contain;
     
@@ -51,11 +51,11 @@
 
 /* form body */
 .indexFormBody > div > input[type="email"]{
-    background-image: url("/images/logo_username.png");
+    background-image: url("/images/assets/logo_username.png");
 }
 
 .indexFormBody > div > input[type="password"]{
-    background-image: url("/images/logo_password.png");
+    background-image: url("/images/assets/logo_password.png");
 }
 
 .indexFormBody > div > input::placeholder, input::-webkit-input-placeholder{

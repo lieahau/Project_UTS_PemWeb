@@ -18,7 +18,7 @@
                 <div class="col-5 indexLogoContainer">
                     <div class="row align-items-center h-100">
                         <div class="col">
-                            <img class="w-100 img-fluid px-4" src="images/logo_signin.png"/>
+                            <img class="w-100 img-fluid px-4" src="images/assets/logo_signin.png"/>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                                 <!-- Row for form header -->
                                 <div class="row indexFormHeader">
                                     <div class="col">
-                                        <img class="img-fluid" src="images/header_signin.png"/>
+                                        <img class="img-fluid" src="images/assets/header_signin.png"/>
                                         <h1 class="text-center">SIGN IN</h1>
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@
                                     <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
                                         <button type="submit" class="btn w-100 p-0">
                                             <p>LOGIN</p>    
-                                            <img class="img-fluid" src="images/button_signin.png">
+                                            <img class="img-fluid" src="images/assets/button_signin.png">
                                         </button>
                                     </div>
                                 </div>
