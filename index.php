@@ -38,11 +38,10 @@
                                 <!-- Row for form body -->
                                 <div class="row justify-content-center indexFormBody">
                                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 pt-1 pb-2">
-                                        <input type="email" class="form-control" id="email" placeholder="USERNAME" oninput="onFormInput()" name="username" require>
-                                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                        <input type="text" class="form-control" id="username" placeholder="USERNAME" oninput="onFormInput()" name="username" require>
                                     </div>
                                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 py-2">
-                                        <input type="password" class="form-control" id="password" placeholder="PASSWORD" name="password" require>
+                                        <input type="password" class="form-control" id="password" placeholder="PASSWORD" oninput="onFormInput()" name="password" require>
                                     </div>
                                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 pt-2">
                                         <div class="form-group form-check">
