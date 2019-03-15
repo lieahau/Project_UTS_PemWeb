@@ -7,8 +7,8 @@
     */
 
     // include class
-    require_once $_SERVER['DOCUMENT_ROOT'].'/classes/DB.php';
-    require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Request.php';
+    require_once '../classes/DB.php';
+    require_once '../classes/Request.php';
     // session_start();
 
     // jika di submit form sign up

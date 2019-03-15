@@ -73,7 +73,7 @@
                                 <!-- Row for form footer -->
                                 <div class="row justify-content-center indexFormFooter">
                                     <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                                        <button type="submit" class="btn w-100 p-0">
+                                        <button type="submit" name="submit-login" class="btn w-100 p-0">
                                             <p>LOGIN</p>    
                                             <img class="img-fluid" src="images/assets/button_signin.png">
                                         </button>

@@ -21,14 +21,14 @@
         // jika true maka berhasil login
         // akan menset session name dengan username dari user
         // sehingga dapat mengingat identitas user yang masuk
-        require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Request.php';
+        require_once '../classes/Request.php';
         $username = Request::post('username');
         $password = Request::post('password');
         $remember = Request::post('remember');
         $succeed = false;
         
         // membuat object DB untuk menghandle pengambilan informasi ke database
-        require_once $_SERVER['DOCUMENT_ROOT'].'/classes/DB.php';
+        require_once '../classes/DB.php';
         if($username->isValidText() && $password->isValidPassword()){
             if(DB::queryCount('user', "username='$username->getVal()' 
             && password=MD5('$password->getVal()'") == 1){
