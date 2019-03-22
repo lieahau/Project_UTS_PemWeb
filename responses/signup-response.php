@@ -9,7 +9,7 @@
     // include class
     require_once '../classes/DB.php';
     require_once '../classes/Request.php';
-    // session_start();
+    session_start();
 
     // jika di submit form sign up
     if(isset($_POST['submit-signup']))
@@ -64,7 +64,8 @@
             ));
 
             // Sign up success, direct to login page
-            header("location: login.php");
+            unset($_SESSION['login_res']);
+            header("location: ../index.php");
         }
     }
     else{

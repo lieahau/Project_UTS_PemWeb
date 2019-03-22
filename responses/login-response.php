@@ -30,8 +30,8 @@
         // membuat object DB untuk menghandle pengambilan informasi ke database
         require_once '../classes/DB.php';
         if($username->isValidText() && $password->isValidPassword()){
-            if(DB::queryCount('user', "username='$username->getVal()' 
-            && password=MD5('$password->getVal()'") == 1){
+            if(DB::queryCount('user', "username='".$username->getVal()."' 
+            AND password=MD5('".$password->getVal()."')") == 1){
                 $succeed = true;
             }
         }
@@ -44,7 +44,7 @@
             $_SESSION['login_res'] = false;
             die("Invalid username or password.");
         }
-        header("location: index.php");
+        header("location: ../profile-view.php");
     }
     else{
         die("no data submitted");
