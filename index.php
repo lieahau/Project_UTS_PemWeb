@@ -38,10 +38,11 @@
                                 <!-- Row for form body -->
                                 <div class="row justify-content-center indexFormBody">
                                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 pt-1 pb-2">
-                                        <input type="text" class="form-control" id="username" placeholder="USERNAME" oninput="onFormInput()" name="username" require>
+                                        <input type="email" class="form-control" id="email" placeholder="EMAIL" oninput="onFormInput()" name="email" require>
+                                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
                                     </div>
                                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 py-2">
-                                        <input type="password" class="form-control" id="password" placeholder="PASSWORD" oninput="onFormInput()" name="password" require>
+                                        <input type="password" class="form-control" id="password" placeholder="PASSWORD" name="password" require>
                                     </div>
                                     <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 pt-2">
                                         <div class="form-group form-check">
@@ -53,14 +54,14 @@
                                     <!-- if login fail then show fail message -->
                                     <?php
                                         session_start();
-                                        if(isset($_SESSION['login_res'])){
-                                            if($_SESSION['login_res']){
-                                                header("location: profile-view.php");
+                                        if(isset($_SESSION['email'])){
+                                            if($_SESSION['email']){
+                                                header("location: index2.php");
                                             }else{
                                                 echo "
                                                 <div class=\"col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 pb-2\">
                                                     <p class=\"text-center my-0\">
-                                                        Incorrect username or password!
+                                                        Incorrect email or password!
                                                     </p>    
                                                 </div>
                                                 ";

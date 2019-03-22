@@ -1,7 +1,7 @@
 <?php
 	$key = [
 		"field"=>"email",
-		"value"=>$_SESSION['userName']
+		"value"=>$_SESSION['email']
 	];
 	$friendsdata = $cls->tampilCond("user",$key,"!=");
 	$friendarray = array();

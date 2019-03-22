@@ -18,6 +18,7 @@
 				}
 				$sql="insert into ".$file." ($key2) values($value)";	
 				$query=$this->db->query($sql);
+				print_r($sql);
 				return 0;
 				
 			}

@@ -22,7 +22,6 @@
                
             </button>
                <?php  } ?>
-      	<h3 style="margin: 0">Header</h3>
             
       	<p>Date : <?php echo $d->getDate() ?></p>
       	<p><?php echo $d->getCaption() ?></p>

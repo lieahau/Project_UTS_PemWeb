@@ -14,32 +14,33 @@
 	$formated_date .= $date_array['mday'] ;
 	
 	$validfile = basename($_FILES['foto']['name']);
-	echo $validfile;
-	if(isset($validfile)){
+	$uploaddir = 'uploads/';
+	$uploadfile = $uploaddir . basename($_FILES['foto']['name']);
+	if(!isset($validfile)){
 		$field = [
-			"writed_by"=>$_SESSION['userName'],
+			"writed_by"=>$_SESSION['email'],
 			"status_content"=>$posting,
 			"Date"=>$formated_date,
 		];
 	}else{
-		$uploaddir = 'uploads/';
-		$uploadfile = $uploaddir . basename($_FILES['foto']['name']);
+		
 		$field = [
-			"writed_by"=>$_SESSION['userName'],
+			"writed_by"=>$_SESSION['email'],
 			"status_content"=>$posting,
 			"Date"=>$formated_date,
-			"Images"=>$uploadfile	
+			"images"=>$uploadfile	
 		];
 	}
 	
- 	
+ 	print_r($field);
 	
 	$where=[
 			'field'=>'status_id',
 			'value'=>$status_id
 	];
 	echo $btn;
-	if($btn=="Input"){	
+	
+	if($btn=="Input"){
 			move_uploaded_file($_FILES['foto']['tmp_name'] , $uploadfile);
 			$cls->insert('status',$field);
 		}else if($btn == "edit"){

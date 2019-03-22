@@ -1,1 +1,0 @@
-Use this folder if using js/css files from outside

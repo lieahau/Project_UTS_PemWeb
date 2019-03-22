@@ -213,7 +213,7 @@
 				<input type="text" name="posting" placeholder="Tuliskan" class="col-md-12 form-control" id="caption">
 				</div>
 				<div class="form-group">
-					<input type="text" name="id" id="id">
+					<input type="hidden" name="id" id="id">
 					<input type="file"  name="foto" id="foto"  onchange="readURL(this)">
 					<img src="profile/profile_orang.png" id="foto1" style="width:100px;height:100px;" onclick="validfoto()" id="images">
 					<text id="foto2"></text>

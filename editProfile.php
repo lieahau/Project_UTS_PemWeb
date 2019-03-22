@@ -21,7 +21,7 @@
 		<form action="profileedit.php" method="POST" enctype="multipart/form-data" >
 			<div class="form-group">
 					<text>Email</text>
-					<input type="email" value="<?php echo $_SESSION['userName'] ?>" name="email" class="form-control" readonly>
+					<input type="email" value="<?php echo $_SESSION['email'] ?>" name="email" class="form-control" readonly>
 					<text>firstname</text>
 					<input type="text" class="form-control" name="firstname" value="<?php echo $profileObj->getFirstname() ?>">
 					<text>lastname</text>

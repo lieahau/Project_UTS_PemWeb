@@ -1,14 +1,10 @@
 <?php
 	class post{
 		private $_StatusId;
-		private $_Title;
 		private $_Date;
 		private $_StatusContent;
 		private $_Images;
 		private $_WritedBy;
-		public function setTitle($Title){
-			$this->Title = $Title;
-		}
 		public function setID($Status){
 			$this->_StatusId = $Status;
 		}

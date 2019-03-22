@@ -64,7 +64,7 @@
             ));
 
             // Sign up success, direct to login page
-            unset($_SESSION['login_res']);
+            unset($_SESSION['email']);
             header("location: ../index.php");
         }
     }

@@ -7,10 +7,10 @@
 			"value"=>$_GET['email']
 		];
 		
-	}else if(isset($_SESSION['userName'])){
+	}else if(isset($_SESSION['email'])){
 		$key = [
 			"field"=>"writed_by",
-			"value"=>$_SESSION['userName']
+			"value"=>$_SESSION['email']
 		];
 	}
 	$dataShow = $cls->tampilcond("status",$key,"=");	

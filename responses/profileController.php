@@ -3,8 +3,8 @@
 	$where;
 	if(isset($_GET['email'])){
 		$where = $_GET['email'];
-	}else if(isset($_SESSION['userName'])){
-		$where = $_SESSION['userName'];
+	}else if(isset($_SESSION['email'])){
+		$where = $_SESSION['email'];
 	}
 	$key=[
 			'field'=>'email',

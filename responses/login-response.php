@@ -22,16 +22,16 @@
         // akan menset session name dengan username dari user
         // sehingga dapat mengingat identitas user yang masuk
         require_once '../classes/Request.php';
-        $username = Request::post('username');
+        $email = Request::post('email');
         $password = Request::post('password');
         $remember = Request::post('remember');
         $succeed = false;
         
         // membuat object DB untuk menghandle pengambilan informasi ke database
         require_once '../classes/DB.php';
-        if($username->isValidText() && $password->isValidPassword()){
-            if(DB::queryCount('user', "username='".$username->getVal()."' 
-            AND password=MD5('".$password->getVal()."')") == 1){
+        if($email->isValidEmail() && $password->isValidPassword()){
+            if(DB::queryCount('user', "email='".$email->getVal()."' 
+            && password=MD5('".$password->getVal()."')") == 1){
                 $succeed = true;
             }
         }
@@ -39,14 +39,15 @@
         // Start session and save response into "login_res"
         session_start();
         if($succeed){
-            $_SESSION['login_res'] = true;
+            $_SESSION['email'] = $email->getVal();
         }else{
-            $_SESSION['login_res'] = false;
-            die("Invalid username or password.");
+            unset($_SESSION['email']);
+            die("Incorrect email or password.");
         }
-        header("location: ../profile-view.php");
+        header("location: ../index2.php");
     }
     else{
         die("no data submitted");
     }
+    
 ?>
