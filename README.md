@@ -2,23 +2,31 @@
 
 ##Berupa project membuat replika social media dengan bahasa pemrograman PHP.
 
-**Ikuti konvensi ini**
 * Database
-Lihat struktur database di design/Facenote ERD.
-Nama database: facenote.
+  * Lihat struktur database di design/Facenote ERD.
+  * Nama database: facenote
+  * File SQL: design/facenote.sql
 
-* Login
 
-Response login tersimpan di = login_res(boolean).
-Yang menghandle login = login-response.php.
-Form menggunakan POST.
 
-###Atribute form login:
-1. Username = username
-2. Password = password
-3. Remember Me = remember
+* Credits
+  * UI/UX Mock Up Design:
+    * Yunika Laurensia Winoto
+    
+  * Sign In:
+    * Ryan Fernanda
+    * Budiman Putra Jaya
+    
+  * Sign Up:
+    * Budiman Putra Jaya
+    
+  * Profile:
+    * Willy
+    * Crist Surya Kurniawan Lie
+    
+  * Edit Profile:
+    * Willy
 
-* Profile View(profile-view.php)
-
-Jika ingin mendapatkan data friend list, gunakan lah ajax ke friend-list.php dengan method GET yang akan mengembalikan data berupa JSON berisi username dan name file profile picture.
-
+  * PHP Class:
+    * Budiman Putra Jaya
+    * Willy
