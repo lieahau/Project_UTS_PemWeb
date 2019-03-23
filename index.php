@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php session_start();
-    setcookie('remember', "", time() - 3600);
     if(isset($_COOKIE['remember'])){
         $_SESSION['email'] = $_COOKIE['remember'];
         header("location: ../index2.php");
