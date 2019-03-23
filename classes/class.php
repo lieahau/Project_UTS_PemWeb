@@ -59,9 +59,9 @@
 					return "{$k}='{$v}'";
 				},$field,array_keys($field));
 				$value2=implode(",",$value);
-				$sql="update $file set $value2 where $key=$va";
+				$sql="update $file set $value2 where $key='$va'";
 				$query=$this->db->query($sql);
-				print_r($query);
+				print_r($sql);
 				
 			}
 			public function tampilinner($field,$file1,$file2,$kode,$kode2){

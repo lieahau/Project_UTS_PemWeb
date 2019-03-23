@@ -18,42 +18,52 @@
         if(Request::post('username')->isValidUsername()) // validate username
             $username = Request::post('username')->getVal();
         else
-            die("Sign Up failed. Invalid Username. Username must be greater than 3 and less than 255 with only alpha-numeric and underscore allowed.");
-        
+            $_SESSION['FailSignup'] = "Sign Up failed. Invalid Username. Username must be greater than 3 and less than 255 with only alpha-numeric and underscore allowed.";
+
         if(Request::post('email')->isValidEmail()) // validate email
             $email = Request::post('email')->getVal();
         else
-            die("Sign Up failed. Invalid Email.");
+            $_SESSION['FailSignup'] = "Sign Up failed. Invalid Email.";
 
         if(Request::post('password')->isValidPassword()) // validate password
             $password = Request::post('password')->getVal();
         else
-            die("Sign Up failed. Password length must be greater than 6 and less than 255.");
+            $_SESSION['FailSignup'] = "Sign Up failed. Password length must be greater than 6 and less than 255.";
         
         if(Request::post('firstname')->isValidLength()) // validate first name
             $firstname = Request::post('firstname')->getVal();
         else
-            die("Sign Up failed. First Name must be less than 255.");
+            $_SESSION['FailSignup'] = "Sign Up failed. First Name must be less than 255.";
 
         if(Request::post('lastname')->isValidLength()) // validate last name
             $lastname = Request::post('lastname')->getVal();
         else
-            die("Sign Up failed. Last Name must be less than 255.");
+            $_SESSION['FailSignup'] ="Sign Up failed. Last Name must be less than 255.";
 
         if(Request::post('birthdate')->isValidBirthDate()) // validate birth of date
             $birthdate = Request::post('birthdate')->getVal();
         else
-            die("Sign Up failed. Invalid Date of Birth.");
+            $_SESSION['FailSignup'] = "Sign Up failed. Invalid Date of Birth.";
 
         $sex = Request::post('sex')->getVal();
-        $profilepicture = 'placeholder.jpg'; // belom bisa upload file, jadi pake default value dulu
-        
+        if(Request::post('profilepict')->isValidImage('profilepict')){
+            $profilepicture = Request::post('profilepict')->setUploadImage('profilepict');
+        }
+        else{
+            $profilepicture = 'uploads/placeholder.png';
+        }
+
         // cek apakah sudah ada di database
         if(DB::queryCount('user', "username = '$username'")){
-            die("Sign Up failed. Username existed. Please use another username.");
+            $_SESSION['FailSignup'] = "Sign Up failed. Username existed. Please use another username.";
         }
         else if(DB::queryCount('user', "email = '$email'")){
-            die("Sign Up failed. Email already registered. Please use another email.");
+            $_SESSION['FailSignup'] = "Sign Up failed. Email already registered. Please use another email.";
+        }
+
+        // Sign up fail, reload page
+        if(isset($_SESSION['FailSignup'])){
+            header("location: ../signup.php");
         }
         else{
             // insert into database
@@ -64,12 +74,16 @@
             ));
 
             // Sign up success, direct to login page
+            if(isset($_COOKIE['remember'])){
+                unset($_COOKIE['remember']);
+                setcookie('remember', "", time() - 86400, '/'); // unset cookie
+            }
             unset($_SESSION['email']);
             header("location: ../index.php");
         }
     }
     else{
-        die("no data submitted");
+        header("location: ../signup.php");
     }
 
 ?>

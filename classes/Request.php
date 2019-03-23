@@ -14,6 +14,40 @@ class RequestData{
         return $this->val;
     }
 
+    public function setUploadImage($varName){
+        $uploaddir = 'uploads/';
+        $target_file = $uploaddir . basename($_FILES[$varName]['name']);
+        $filename = basename($_FILES[$varName]['name']);
+
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $filename = round(microtime(true)) . '.' . $imageFileType;
+        $uploadfile = '../' . $uploaddir . $filename;
+        while(true){
+            if(file_exists($uploadfile)){
+                $filename = round(microtime(true)) . '.' . $imageFileType;
+                $uploadfile = '../' . $uploaddir . $filename;
+            }
+            else
+                break;
+        }
+        $this->val = $uploaddir . $filename;
+
+        move_uploaded_file($_FILES[$varName]['tmp_name'] , $uploadfile);
+
+        return $this->val;
+    }
+
+    public function isValidImage($varName){
+        $uploaddir = 'uploads/';
+        $target_file = $uploaddir . basename($_FILES[$varName]['name']);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg")
+            return false;
+        else
+            return true;
+    }
+
     public function isValidText(){
         return (preg_match('/^[a-zA-Z0-9_]+$/', $this->val)); // cuma boleh alphabet, angka, dan underscore
     }

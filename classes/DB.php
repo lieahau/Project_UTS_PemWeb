@@ -32,14 +32,6 @@ class DB{
         $statement->execute();
     }
 
-    /* ======= querySelect() NOT TESTED YET ======= */
-    public static function querySelect($tableName, $columns = array('*'), $condition = true){ 
-        $query = "SELECT ".implode(',', $columns)." FROM $tableName WHERE $condition";
-        $statement = self::$pdo->prepare($query);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     public static function queryCount($tableName, $condition = true){
         if(!isset(self::$pdo))
             self::connect();
@@ -47,6 +39,17 @@ class DB{
         $query = "SELECT COUNT(*) FROM $tableName WHERE $condition";
         $statement = self::$pdo->query($query); // ini manggil query() function nya PDO, bukan function di class ini
         return $statement->fetchColumn();
+    }
+
+    public static function querySelect($tableName, $columns = array('*'), $condition = true){ 
+        if(!isset(self::$pdo))
+            self::connect();
+
+        $query = "SELECT ".implode(',', $columns)." FROM $tableName WHERE $condition";
+        print_r($query);
+        $statement = self::$pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 
