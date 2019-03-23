@@ -17,7 +17,6 @@ class RequestData{
     public function setUploadImage($varName){
         $uploaddir = 'uploads/';
         $target_file = $uploaddir . basename($_FILES[$varName]['name']);
-        $filename = basename($_FILES[$varName]['name']);
 
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $filename = round(microtime(true)) . '.' . $imageFileType;
