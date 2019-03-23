@@ -46,7 +46,8 @@
             $_SESSION['FailSignup'] = "Sign Up failed. Invalid Date of Birth.";
 
         $sex = Request::post('sex')->getVal();
-        if(Request::post('profilepict')->isValidImage('profilepict')){
+
+        if(Request::post('profilepict')->isValidImage('profilepict')){ // validate profile picture
             $profilepicture = Request::post('profilepict')->setUploadImage('profilepict');
         }
         else{
