@@ -1,8 +1,10 @@
 <?php
 	session_start();
 	include "classes/class.php";
-
+	include "classes/Request.php";
 	$cls = new crud();
+	$valid = new RequestData('foto');
+
 	$posting=$_POST['posting'];
 	$btn = $_POST['buttonInput'];
 	$status_id= $_POST['id'];
@@ -14,9 +16,10 @@
 	$formated_date .= $date_array['mday'] ;
 	
 	$validfile = basename($_FILES['foto']['name']);
-	$uploaddir = 'uploads/';
-	$uploadfile = $uploaddir . basename($_FILES['foto']['name']);
-	if(!isset($validfile)){
+	$isImage = $valid->isValidImage('foto',"");
+	$file = Request::post('foto')->setUploadImage('foto');
+	echo $validfile;
+	if($validfile==""){
 		$field = [
 			"writed_by"=>$_SESSION['email'],
 			"status_content"=>$posting,
@@ -24,12 +27,23 @@
 		];
 	}else{
 		
-		$field = [
-			"writed_by"=>$_SESSION['email'],
-			"status_content"=>$posting,
-			"Date"=>$formated_date,
-			"images"=>$uploadfile	
-		];
+		
+		if($isImage){
+			$field = [
+				"writed_by"=>$_SESSION['email'],
+				"status_content"=>$posting,
+				"Date"=>$formated_date,
+				"images"=>$file	
+			];
+		}else{
+			?>
+			<script type="text/javascript">
+				alert("Image Tidak Valid");
+				//location.href="index2.php";
+			</script>
+			<?php
+			break;
+		}
 	}
 	
  	print_r($field);
@@ -39,12 +53,24 @@
 			'value'=>$status_id
 	];
 	echo $btn;
-	
 	if($btn=="Input"){
-			move_uploaded_file($_FILES['foto']['tmp_name'] , $uploadfile);
+		
 			$cls->insert('status',$field);
+			?>
+			<script type="text/javascript">
+				alert("Saved");
+			</script>
+			<?php
 		}else if($btn == "edit"){
-			move_uploaded_file($_FILES['foto']['tmp_name'] , $uploadfile);
+			
 			$cls->edit('status',$field,$where);
+			?>
+			<script type="text/javascript">
+				alert("Edited");
+			</script>
+			<?php
 	}
+	
+	
+	
 ?>

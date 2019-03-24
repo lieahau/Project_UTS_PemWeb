@@ -7,7 +7,12 @@
 		"field"=>"first_name",
 		"value"=>$src
 	];
-	$friendsdata = $cls->tampilSrc("user",$key);
+	$cond = [
+		"field" =>"email",
+		"value"=>$_SESSION['email'],
+		"conds"=>"!="
+	];
+	$friendsdata = $cls->tampilSrc("user",$key,$cond);
 	$friendarray = array();
 	foreach ($friendsdata as $f) {
 		$friends = new friends;

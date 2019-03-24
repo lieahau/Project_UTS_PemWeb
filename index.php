@@ -2,7 +2,7 @@
 <?php session_start();
     if(isset($_COOKIE['remember'])){
         $_SESSION['email'] = $_COOKIE['remember'];
-        header("location: ../index2.php");
+        header("location: index2.php");
     }
 ?>
 <html>

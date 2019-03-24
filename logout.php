@@ -1,0 +1,9 @@
+<?php
+	session_start();
+	if(isset($_COOKIE['remember'])){
+		unset($_COOKIE['remember']);
+		setcookie('remember',"",time()-86400,"/");
+	}
+	session_destroy();
+	header("Location:index.php");
+?>

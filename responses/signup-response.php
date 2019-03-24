@@ -48,7 +48,8 @@
         $sex = Request::post('sex')->getVal();
 
         if(Request::post('profilepict')->isValidImage('profilepict')){ // validate profile picture
-            $profilepicture = Request::post('profilepict')->setUploadImage('profilepict');
+            $profilepicture = Request::post('profilepict')->setUploadImage('profilepict',"../");
+            echo $profilepicture;
         }
         else{
             $profilepicture = 'uploads/placeholder.png';
@@ -80,7 +81,7 @@
                 setcookie('remember', "", time() - 86400, '/'); // unset cookie
             }
             unset($_SESSION['email']);
-            header("location: ../index.php");
+            header("Location:index.php");
         }
     }
     else{

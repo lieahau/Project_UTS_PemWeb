@@ -2,7 +2,7 @@
 	class crud{
 			
 			public function __construct(){
-				$this->db=new PDO ('mysql:host=localhost;dbname=epiz_23654154_facenote','root','');
+				$this->db=new PDO ('mysql:host=localhost;dbname=facenote','root','');
 			}
 			public function insert($file,$field){
 				$key=array_keys($field);
@@ -36,13 +36,10 @@
 				
 				return $query;
 			}
-			public function tampilSrc($file,$where,$cond){
+			public function tampilSrc($file,$where){
 				$key=$where['field'];
 				$va=$where['value'];
-				$condKey = $cond['field'];
-				$condvalue = $cond['value'];
-				$condition = $cond['conds'];
-				$sql="select * from ".$file." where ".$key." like '%$va%' and $condKey $condition '$condvalue'";
+				$sql="select * from ".$file." where ".$key." like '%$va%'";
 				
 				$query=$this->db->query($sql);
 				

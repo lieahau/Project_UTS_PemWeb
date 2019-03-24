@@ -1,12 +1,14 @@
 <?php
 	include "classes/class.php";
-	$uploaddir = 'uploads/';
-	$uploadfile = $uploaddir . basename($_FILES['foto']['name']);
+	include "classes/Request.php";
+	$valid = new RequestData('foto');
 	$cls = new crud();
 	$validfile = basename($_FILES['foto']['name']);
 	$uploaddir = 'uploads/';
 	$uploadfile = $uploaddir . basename($_FILES['foto']['name']);
-	if(!isset($validfile)){
+	$isImage = $valid->isValidImage('foto');
+	$file = Request::post('foto')->setUploadImage('foto',"");
+	if($validfile==""){
 		$field = [
 			"birthdate"=>$_POST['date'],
 			"first_name"=>$_POST['firstname'],
@@ -14,20 +16,34 @@
 			
 		];
 	}else{
-		$field = [
-			"birthdate"=>$_POST['date'],
-			"first_name"=>$_POST['firstname'],
-			"last_name"=>$_POST['lastname'],
-			"profile_picture"=>$uploadfile
-		];
+		if($isImage){
+			$field = [
+				"birthdate"=>$_POST['date'],
+				"first_name"=>$_POST['firstname'],
+				"last_name"=>$_POST['lastname'],
+				"profile_picture"=>$file
+			];
+		}else{
+			?>
+			<script type="text/javascript">
+				alert("Image Tidak Valid");
+				location.href="index2.php";
+			</script>
+			<?php
+			break;
+		}
 	}
 	
 	$where = [
 		"field"=>"email",
 		"value"=>$_POST['email']
 	];
-	
+	echo $uploadfile;
 	move_uploaded_file($_FILES['foto']['tmp_name'] , $uploadfile);
 	$cls->edit("user",$field,$where);
 	
 ?>
+<script type="text/javascript">
+				alert("Edited");
+				location.href="index2.php";
+			</script>

@@ -14,17 +14,18 @@ class RequestData{
         return $this->val;
     }
 
-    public function setUploadImage($varName){
+    public function setUploadImage($varName,$dir){
         $uploaddir = 'uploads/';
         $target_file = $uploaddir . basename($_FILES[$varName]['name']);
 
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $filename = round(microtime(true)) . '.' . $imageFileType;
-        $uploadfile = '../' . $uploaddir . $filename;
+        $uploadfile = "$dir".$uploaddir . $filename;
+        echo $uploadfile;
         while(true){
             if(file_exists($uploadfile)){
                 $filename = round(microtime(true)) . '.' . $imageFileType;
-                $uploadfile = '../' . $uploaddir . $filename;
+                $uploadfile = $uploaddir . $filename;
             }
             else
                 break;

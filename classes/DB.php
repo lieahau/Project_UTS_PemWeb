@@ -6,7 +6,7 @@ class DB{
         $host = "localhost"; // lokasi mysql
         $username = "root"; // user untuk login
         $password = ""; // password untuk login
-        $dbname = "facenote"; // database name
+        $dbname = "epiz_23654154_facenote"; // database name
 
         self::$pdo = new PDO("mysql:host=$host;dbname=$dbname;", $username, $password); // connect pdo
         self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // set error mode
