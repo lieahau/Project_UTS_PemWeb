@@ -1,6 +1,6 @@
 @font-face{
     font-family: BreeSerif;
-    src: url("/fonts/Bree-serif/BreeSerif-Regular.otf");
+    src: url("../fonts/Bree-serif/BreeSerif-Regular.otf");
 }
 
 body{
