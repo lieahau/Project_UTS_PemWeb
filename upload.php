@@ -17,8 +17,7 @@
 	
 	$validfile = basename($_FILES['foto']['name']);
 	$isImage = $valid->isValidImage('foto',"");
-	$file = Request::post('foto')->setUploadImage('foto');
-	echo $validfile;
+	$file = Request::post('foto')->setUploadImage('foto', "");
 	if($validfile==""){
 		$field = [
 			"writed_by"=>$_SESSION['email'],
@@ -33,7 +32,7 @@
 				"writed_by"=>$_SESSION['email'],
 				"status_content"=>$posting,
 				"Date"=>$formated_date,
-				"images"=>$file	
+				"images"=>$file
 			];
 		}else{
 			?>
@@ -42,17 +41,13 @@
 				//location.href="index2.php";
 			</script>
 			<?php
-			break;
 		}
 	}
-	
- 	print_r($field);
 	
 	$where=[
 			'field'=>'status_id',
 			'value'=>$status_id
 	];
-	echo $btn;
 	if($btn=="Input"){
 		
 			$cls->insert('status',$field);

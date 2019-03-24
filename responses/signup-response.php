@@ -81,7 +81,7 @@
                 setcookie('remember', "", time() - 86400, '/'); // unset cookie
             }
             unset($_SESSION['email']);
-            header("Location:index.php");
+            header("Location:../index.php");
         }
     }
     else{

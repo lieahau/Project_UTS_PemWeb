@@ -30,7 +30,6 @@
 				location.href="index2.php";
 			</script>
 			<?php
-			break;
 		}
 	}
 	
@@ -38,12 +37,10 @@
 		"field"=>"email",
 		"value"=>$_POST['email']
 	];
-	echo $uploadfile;
 	move_uploaded_file($_FILES['foto']['tmp_name'] , $uploadfile);
 	$cls->edit("user",$field,$where);
 	
 ?>
 <script type="text/javascript">
-				alert("Edited");
 				location.href="index2.php";
 			</script>

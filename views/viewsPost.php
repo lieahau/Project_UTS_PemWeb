@@ -1,7 +1,5 @@
 <script>
       function edit(id,caption,image){
-                  alert("test");
-
                   $("#myModal").modal("show");
                    document.getElementById('id').value = id;
                   document.getElementById('caption').value = caption;
