@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<?php session_start() ?>
+	<?php session_start();
+		if(!isset($_SESSION['email'])){
+		header("Location:index.php");
+	}
+	?>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,8 +15,14 @@
   <script type="text/javascript" src="js/web.js"></script>
 	<title></title>
  <style type="text/css">
+ @font-face{
+    font-family: BreeSerif;
+    src: url("fonts/Bree-serif/BreeSerif-Regular.otf");
+	}
+	
 	 html,body{
 		 height: 100%;
+		 font-family: BreeSerif;
 	}
  	@media only screen and (max-width: 600px) {
 		  .sidepanel{
@@ -51,8 +61,8 @@
 	       
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['email'] ?></a></li>
-	        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+	        <li><a href="editProfile.php"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['email'] ?></a></li>
+	        <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
 	      </ul>
 	      <form class="navbar-form navbar-left" action="Search.php" method="POST">
 	      <div class="input-group">
@@ -74,7 +84,7 @@
 			</a>
 		</div>
 		<div class="col-md-12" style="padding-left: 20%;">
-			<img src="images/assets/search.png" class="imgProfile" style="width: 150px;height: 150px;">
+			<img src="images/assets/search_history/search.png" class="imgProfile" style="width: 150px;height: 150px;">
 			<h3 style="margin-left: 15%;color: white">Search</h2>
 		</div>
 	</div>
@@ -86,7 +96,7 @@
 	   		      <button class="btn btn-default" type="submit">
 				            <i class="glyphicon glyphicon-search"></i>
 				  </button>
-			     <input type="button" name="" class="btn btn-danger" value="Logout" style="margin-left: 5%;">
+			      <a href="logout.php" class="btn btn-danger" style="margin-left: 5%;" >Logout</a>
 			    </div>
 				  
 		    </div>

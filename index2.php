@@ -9,6 +9,7 @@
   <script type="text/javascript" src="js/web.js"></script>
   <?php
  	session_start();
+ 	
   	include "classes/class.php";
 	
 	include "classes/showModel.php";
@@ -16,11 +17,21 @@
 	include "classes/commentModel.php";
 	include "classes/friendsModel.php";
 	include "responses/friendsController.php";
-	include "responses/profileController.php"
+	include "responses/profileController.php";
+	if(!isset($_SESSION['email'])){
+		header("Location:index.php");
+	}
 	?>
 <head>
 	<title></title>
 	<style type="text/css">
+	@font-face{
+    font-family: BreeSerif;
+    src: url("fonts/Bree-serif/BreeSerif-Regular.otf");
+	}
+	body{
+	    font-family: BreeSerif;
+	}
 		*{
 			margin: 0;
 		}
@@ -109,7 +120,8 @@
 
 	</style>
 </head>
-<body style="background-color: #f69883" onload="fadeIn()">
+<body style="background-color: #f69883">
+	
 
 	<nav class="navbar navbar-inverse" id="bar" style="">
 	  <div class="container-fluid">
@@ -126,11 +138,11 @@
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
 	        <li class="active"><a href="#">Home</a></li>
-	       
 	      </ul>
+
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['email'] ?></a></li>
-	        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+	        <li><a href="editProfile.php"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['email'] ?></a></li>
+	        <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
 	      </ul>
 	      <form class="navbar-form navbar-left" action="Search.php" method="POST">
 	      <div class="input-group">
@@ -154,7 +166,7 @@
 		   		      <button class="btn btn-default" type="submit">
 				            <i class="glyphicon glyphicon-search"></i>
 				      </button>
-				       <input type="button" name="" class="btn btn-danger" value="Logout" style="margin-left: 5%;">
+				       <a href="logout.php" class="btn btn-danger" style="margin-left: 5%;" >Logout</a>
 				    </div>
 				   
 			    </div>
@@ -199,7 +211,7 @@
 	<?php
 	if(!isset($_GET['email'])){
 	?>
-		<img src="images/assets/profile/tambah.png" class="floatBtn" id="btnModal">
+		<img src="images/assets/profile/tambah.png" class="floatBtn" id="btnModal" onclick="clean()">
 	<?php } ?>
 	<div id="myModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
@@ -217,9 +229,9 @@
 				</div>
 				<div class="form-group">
 					<input type="hidden" name="id" id="id">
-					<input type="file"  name="foto" id="foto"  onchange="readURL(this)">
-					<img src="profile/profile_orang.png" id="foto1" style="width:100px;height:100px;" onclick="validfoto()" id="images">
-					<text id="foto2"></text>
+					<input type="file"  name="foto" id="foto"  onchange="readURL(this)"  accept="image/*" >
+					<img src="images/assets/profile/profile_orang.png" id="foto1" style="width:100px;height:100px;" >
+					<text id="foto2">(Maximum size: 2 Mb)</text>
 				</div>
 				<div class="form-group">
 				<input type="submit" class="btn btn-info" value="Input" id="buttonInput" name="buttonInput">
@@ -233,7 +245,11 @@
 
 	  </div>
 	</div>
-	
+
 </body>
+<script type="text/javascript">
+	
+</script>
+
 
 </html>

@@ -10,8 +10,13 @@
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	  <script type="text/javascript" src="js/web.js"></script>
 	  <style type="text/css">
+	  @font-face{
+    font-family: BreeSerif;
+    src: url("fonts/Bree-serif/BreeSerif-Regular.otf");
+	}
 	  html,body{
 	  	height: 100%;
+	  	font-family: BreeSerif;
 	  }
  	@media only screen and (max-width: 600px) {
 		  .sidepanel{
@@ -35,6 +40,9 @@
 	include "classes/class.php"; 
 	include "classes/friendsModel.php";
 	include "responses/profileController.php";
+	if(!isset($_SESSION['email'])){
+		header("Location:index.php");
+	}
 	?>
 </head>
 <body onload="setdate()" style="background-color: #f69883;">
@@ -56,8 +64,8 @@
 	       
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['email'] ?></a></li>
-	        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+	        <li class="active"><a href="editProfile.php"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['email'] ?></a></li>
+	        <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
 	      </ul>
 	      <form class="navbar-form navbar-left" action="Search.php" method="POST">
 	      <div class="input-group">
@@ -99,11 +107,11 @@
 						<text>BirthDate</text>
 						<input type="date" class="form-control" value="<?php echo $profileObj->getBirthdate() ?>" id="date" name="date">
 						<text>Picture</text>
-						<input type="file"  name="foto" id="foto"  onchange="readURL(this)">
-						<img src="<?php echo $profileObj->getProfilepic() ?>" id="foto1" style="width:100px;height:100px;" onclick="validfoto()" id="images" value="<?php echo $profileObj->getProfilepic() ?>" name="images">
-						<text id="foto2" ></text>
+						<input type="file"  name="foto" id="foto"  onchange="readURL(this)" accept="image/*">
+						<img src="<?php echo $profileObj->getProfilepic() ?>" id="foto1" style="width:100px;height:100px;" id="foto1" name="images">
+						<text id="foto2" >(Maximum size:2 Mb)</text>
 						<div class="form-group" style="margin-top: 2%">
-							<input type="submit" name="" class="btn btn-warning" value="Edit">
+							<input type="submit" name="" class="btn btn-warning" value="Edit" id="buttonInput">
 						</div>
 				</div>	
 			</form>

@@ -1,6 +1,6 @@
 @font-face{
     font-family: BreeSerif;
-    src: url("/fonts/Bree-serif/BreeSerif-Regular.otf");
+    src: url("../fonts/Bree-serif/BreeSerif-Regular.otf");
 }
 
 body{
@@ -22,7 +22,7 @@ body{
 }
 
 .signup-form-container{
-    background: url("/images/assets/background_biru.png") repeat;
+    background: url("../images/assets/background_biru.png") repeat;
     background-size: contain;
 }
 
@@ -95,11 +95,11 @@ body{
 }
 
 .signup-form-gender input[type=radio]:checked#male + img{
-    content: url("/images/assets/signup/cowo_select.png");
+    content: url("../images/assets/signup/cowo_select.png");
 }
 
 .signup-form-gender input[type=radio]:checked#female + img{
-    content: url("/images/assets/signup/cewe_select.png");
+    content: url("../images/assets/signup/cewe_select.png");
 }
 
 #signup-form-profilepict .form-control-file{
