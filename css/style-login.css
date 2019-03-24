@@ -22,7 +22,7 @@ body{
 }
 
 .signin-form-container{
-    background: url("/images/assets/background_biru.png") repeat;
+    background: url("../images/assets/background_biru.png") repeat;
     background-size: contain;
 }
 
