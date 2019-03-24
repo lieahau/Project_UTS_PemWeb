@@ -16,7 +16,7 @@
 	$formated_date .= $date_array['mday'] ;
 	
 	$validfile = basename($_FILES['foto']['name']);
-	$isImage = $valid->isValidImage('foto',"");
+	$isImage = $valid->isValidImage('foto');
 	$file = Request::post('foto')->setUploadImage('foto', "");
 	if($validfile==""){
 		$field = [
@@ -38,7 +38,7 @@
 			?>
 			<script type="text/javascript">
 				alert("Image Tidak Valid");
-				//location.href="index2.php";
+				location.href="index2.php";
 			</script>
 			<?php
 		}
@@ -65,7 +65,7 @@
 			</script>
 			<?php
 	}
-	
+	header("Location:index2.php");
 	
 	
 ?>

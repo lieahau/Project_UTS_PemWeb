@@ -4,8 +4,8 @@
 
 * Database
   * Lihat struktur database di design/Facenote ERD.
-  * Nama database: facenote
-  * File SQL: design/facenote.sql
+  * Nama database: epiz_23654154_facenote
+  * File SQL: design/epiz_23654154_facenote.sql
 
 
 

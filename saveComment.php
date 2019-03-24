@@ -11,7 +11,7 @@
 	$field = [
 		"comment_id"=>'',
 		"comment_in"=>$id,
-		"comment_by"=>"willy@gmail.com",
+		"comment_by"=>$_SESSION['email'],
 		"comment_content"=>$comment,
 		"Date"=> $now
 	];

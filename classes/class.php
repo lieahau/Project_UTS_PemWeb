@@ -18,7 +18,7 @@
 				}
 				$sql="insert into ".$file." ($key2) values($value)";	
 				$query=$this->db->query($sql);
-				print_r($sql);
+				
 				return 0;
 				
 			}
@@ -45,7 +45,6 @@
 				$sql="select * from ".$file." where ".$key." like '%$va%' and $condKey $condition '$condvalue'";
 				
 				$query=$this->db->query($sql);
-				
 				return $query;
 			}
 			public function del($file,$field){
@@ -64,7 +63,7 @@
 				$value2=implode(",",$value);
 				$sql="update $file set $value2 where $key='$va'";
 				$query=$this->db->query($sql);
-				print_r($sql);
+				
 				
 			}
 			public function tampilinner($field,$file1,$file2,$kode,$kode2){

@@ -49,7 +49,6 @@
 
         if(Request::post('profilepict')->isValidImage('profilepict')){ // validate profile picture
             $profilepicture = Request::post('profilepict')->setUploadImage('profilepict',"../");
-            echo $profilepicture;
         }
         else{
             $profilepicture = 'uploads/placeholder.png';
@@ -81,7 +80,7 @@
                 setcookie('remember', "", time() - 86400, '/'); // unset cookie
             }
             unset($_SESSION['email']);
-            header("Location:../index.php");
+            header("location: ../index.php");
         }
     }
     else{

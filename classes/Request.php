@@ -21,7 +21,6 @@ class RequestData{
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $filename = round(microtime(true)) . '.' . $imageFileType;
         $uploadfile = "$dir".$uploaddir . $filename;
-        echo $uploadfile;
         while(true){
             if(file_exists($uploadfile)){
                 $filename = round(microtime(true)) . '.' . $imageFileType;
